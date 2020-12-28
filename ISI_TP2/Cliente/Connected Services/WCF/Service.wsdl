@@ -42,19 +42,7 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceSoap/RegistoResponse" message="tns:IServiceSoap_Registo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IServiceRest" type="tns:IServiceRest">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="RetornaCidades">
-      <soap:operation soapAction="http://tempuri.org/IServiceRest/RetornaCidades" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="BasicHttpBinding_IServiceSoap" type="tns:IServiceSoap">
+  <wsdl:binding name="SOAPEndpoint" type="tns:IServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Login">
       <soap:operation soapAction="http://tempuri.org/IServiceSoap/Login" style="document" />
@@ -76,11 +64,8 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
-    <wsdl:port name="BasicHttpBinding_IServiceRest" binding="tns:BasicHttpBinding_IServiceRest">
-      <soap:address location="http://localhost:56385/Service.svc" />
-    </wsdl:port>
-    <wsdl:port name="BasicHttpBinding_IServiceSoap" binding="tns:BasicHttpBinding_IServiceSoap">
-      <soap:address location="http://localhost:56385/Service.svc" />
+    <wsdl:port name="SOAPEndpoint" binding="tns:SOAPEndpoint">
+      <soap:address location="http://localhost:56385/Service.svc/soap" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -13,8 +13,8 @@ namespace Cliente.Forms
     public partial class Registo : Form
     {
         Dictionary<int, string> listaLocais = new Dictionary<int, string>();
-        WCF.ServiceRestClient servico = new WCF.ServiceRestClient();
-        
+        WCF.ServiceRestClient WCFapi = new WCF.ServiceRestClient();
+
         public Registo()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Cliente.Forms
         private void Registo_Load(object sender, EventArgs e)
         {
 
-            listaLocais = servico.RetornaCidades();
+            listaLocais = WCFapi.RetornaCidades();
             
             foreach(KeyValuePair<int, string> kvp in listaLocais)
             {

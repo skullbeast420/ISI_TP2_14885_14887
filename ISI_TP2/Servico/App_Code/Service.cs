@@ -10,8 +10,10 @@ using System.Data;
 using Newtonsoft.Json;
 using System.Runtime.Serialization.Json;
 using Npgsql;
+using System.ServiceModel.Activation;
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
+
 public class Service : IServiceRest, IServiceSoap
 {
 

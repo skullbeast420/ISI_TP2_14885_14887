@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,10 +15,9 @@ namespace Cliente
     {
 
         Utilizador currentUser = new Utilizador();
-        WCF.ServiceSoapClient WCFsoap = new WCF.ServiceSoapClient();
+        WCF.ServiceSoapClient WCFapi = new WCF.ServiceSoapClient("SOAPEndpoint");
         DataTable dt = new DataTable();
-        
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -37,11 +36,17 @@ namespace Cliente
             this.Close();
         }
 
+        /// <summary>
+        /// Executa o login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            dt = WCFsoap.Login(textBox1.Text, textBox2.Text);
 
-            if (dt == null)
+            dt = WCFapi.Login(textBox1.Text, textBox2.Text);
+
+            if (dt.Rows.Count == 0)
             {
 
                 MessageBox.Show("Os dados estão incorretos. O login foi mal sucedido!");
@@ -63,6 +68,7 @@ namespace Cliente
                 MessageBox.Show("Login efetuado com sucesso!");
 
             }
+
         }
     }
 }
