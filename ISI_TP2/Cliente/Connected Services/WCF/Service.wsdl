@@ -5,7 +5,6 @@
       <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceRest_RetornaCidades_InputMessage">
@@ -14,10 +13,10 @@
   <wsdl:message name="IServiceRest_RetornaCidades_OutputMessage">
     <wsdl:part name="parameters" element="tns:RetornaCidadesResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceSoap_Login_InputMessage">
+  <wsdl:message name="IServiceRest_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
-  <wsdl:message name="IServiceSoap_Login_OutputMessage">
+  <wsdl:message name="IServiceRest_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceSoap_Registo_InputMessage">
@@ -31,12 +30,12 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/RetornaCidades" message="tns:IServiceRest_RetornaCidades_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/RetornaCidadesResponse" message="tns:IServiceRest_RetornaCidades_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Login" message="tns:IServiceRest_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/LoginResponse" message="tns:IServiceRest_Login_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IServiceSoap">
-    <wsdl:operation name="Login">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSoap/Login" message="tns:IServiceSoap_Login_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSoap/LoginResponse" message="tns:IServiceSoap_Login_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="Registo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceSoap/Registo" message="tns:IServiceSoap_Registo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceSoap/RegistoResponse" message="tns:IServiceSoap_Registo_OutputMessage" />
@@ -44,15 +43,6 @@
   </wsdl:portType>
   <wsdl:binding name="SOAPEndpoint" type="tns:IServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Login">
-      <soap:operation soapAction="http://tempuri.org/IServiceSoap/Login" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Registo">
       <soap:operation soapAction="http://tempuri.org/IServiceSoap/Registo" style="document" />
       <wsdl:input>

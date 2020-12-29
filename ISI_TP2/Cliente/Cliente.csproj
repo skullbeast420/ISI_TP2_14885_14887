@@ -127,9 +127,6 @@
     <None Include="Connected Services\WCF\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WCF\Service2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\WCF\Service3.xsd">
       <SubType>Designer</SubType>
     </None>

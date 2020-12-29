@@ -14,9 +14,6 @@ public interface IServiceSoap
 {
 
     [OperationContract]
-    DataTable Login(string email, string password);
-
-    [OperationContract]
     bool Registo(string email);
 
 }

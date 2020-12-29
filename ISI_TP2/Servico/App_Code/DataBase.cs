@@ -35,13 +35,10 @@ public class DataBase
 
             using (var cmd = new NpgsqlCommand(query, connection))
             {
-
                 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, connectionString);
 
-
                 da.Fill(dt);
-
 
             }
 

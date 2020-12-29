@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace Cliente
 
 		public string cidade { get; set; }
 
-		public int idCidade { get; set; }
+		public int id_cidade { get; set; }
 
 		public string email { get; set; }
 
@@ -27,7 +28,7 @@ namespace Cliente
 			id = default(int);
 			nome = default(string);
 			cidade = default(string);
-			idCidade = default(int);
+			id_cidade = default(int);
 			email = default(string);
 			password = default(string);
 
@@ -39,7 +40,7 @@ namespace Cliente
 			id = Id;
 			nome = Nome;
 			cidade = Cidade;
-			idCidade = IDCidade;
+			id_cidade = IDCidade;
 			email = Email;
 			password = Password;
 

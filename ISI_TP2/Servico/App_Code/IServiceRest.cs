@@ -17,7 +17,11 @@ public interface IServiceRest
 	/// </summary>
 	/// <returns></returns>
 	[OperationContract]
-	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate ="RetornaCidades")]
 	Dictionary<int, string> RetornaCidades();
+
+	[OperationContract]
+	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate ="Login/{email}/{password}")]
+	string Login(string email, string password);
 
 }

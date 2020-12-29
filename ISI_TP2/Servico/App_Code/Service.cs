@@ -70,17 +70,20 @@ public class Service : IServiceRest, IServiceSoap
 
 	#region SOAP Services
 
-	public DataTable Login(string email, string password)
-    {
 
+	public string Login(string email, string password)
+    {
 		if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
-        {
+		{
 			string query = "select * from Utilizador where email='" + email + "' and password='" + password + "'";
 
 			dt = db.ExecuteReturnQuery(query);
 		}
 
-		return dt;
+		string jsonString = JsonConvert.SerializeObject(dt);
+
+		return jsonString;
+
 	}
 
 	public bool Registo(string email)

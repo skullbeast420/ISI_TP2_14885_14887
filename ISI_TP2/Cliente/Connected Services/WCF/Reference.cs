@@ -20,6 +20,12 @@ namespace Cliente.WCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/RetornaCidades", ReplyAction="http://tempuri.org/IServiceRest/RetornaCidadesResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RetornaCidadesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
+        string Login(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
+        System.Threading.Tasks.Task<string> LoginAsync(string email, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -56,17 +62,19 @@ namespace Cliente.WCF {
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RetornaCidadesAsync() {
             return base.Channel.RetornaCidadesAsync();
         }
+        
+        public string Login(string email, string password) {
+            return base.Channel.Login(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<string> LoginAsync(string email, string password) {
+            return base.Channel.LoginAsync(email, password);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCF.IServiceSoap")]
     public interface IServiceSoap {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap/Login", ReplyAction="http://tempuri.org/IServiceSoap/LoginResponse")]
-        System.Data.DataTable Login(string email, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap/Login", ReplyAction="http://tempuri.org/IServiceSoap/LoginResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> LoginAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap/Registo", ReplyAction="http://tempuri.org/IServiceSoap/RegistoResponse")]
         bool Registo(string email);
@@ -100,14 +108,6 @@ namespace Cliente.WCF {
         
         public ServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public System.Data.DataTable Login(string email, string password) {
-            return base.Channel.Login(email, password);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataTable> LoginAsync(string email, string password) {
-            return base.Channel.LoginAsync(email, password);
         }
         
         public bool Registo(string email) {
