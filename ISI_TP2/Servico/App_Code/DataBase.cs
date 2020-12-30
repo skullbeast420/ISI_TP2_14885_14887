@@ -48,4 +48,17 @@ public class DataBase
 
     }
 
+    public int ExecuteQuery(string query)
+    {
+        using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+        {
+            connection.Open();
+
+            using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+            {
+                return command.ExecuteNonQuery();
+            }
+        }
+    }
+
 }

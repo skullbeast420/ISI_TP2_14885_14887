@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService" in both code and config file together.
 [ServiceContract]
@@ -23,5 +24,9 @@ public interface IServiceRest
 	[OperationContract]
 	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate ="Login/{email}/{password}")]
 	string Login(string email, string password);
+
+	[OperationContract]
+	[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "Registo?jsonString={jsonString}")]
+	Task<bool> Registo(string jsonString);
 
 }

@@ -19,10 +19,10 @@
   <wsdl:message name="IServiceRest_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceSoap_Registo_InputMessage">
+  <wsdl:message name="IServiceRest_Registo_InputMessage">
     <wsdl:part name="parameters" element="tns:Registo" />
   </wsdl:message>
-  <wsdl:message name="IServiceSoap_Registo_OutputMessage">
+  <wsdl:message name="IServiceRest_Registo_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistoResponse" />
   </wsdl:message>
   <wsdl:portType name="IServiceRest">
@@ -34,28 +34,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Login" message="tns:IServiceRest_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/LoginResponse" message="tns:IServiceRest_Login_OutputMessage" />
     </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="IServiceSoap">
     <wsdl:operation name="Registo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSoap/Registo" message="tns:IServiceSoap_Registo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSoap/RegistoResponse" message="tns:IServiceSoap_Registo_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Registo" message="tns:IServiceRest_Registo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/RegistoResponse" message="tns:IServiceRest_Registo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="SOAPEndpoint" type="tns:IServiceSoap">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Registo">
-      <soap:operation soapAction="http://tempuri.org/IServiceSoap/Registo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="Service">
-    <wsdl:port name="SOAPEndpoint" binding="tns:SOAPEndpoint">
-      <soap:address location="http://localhost:56385/Service.svc/soap" />
-    </wsdl:port>
-  </wsdl:service>
+  <wsdl:service name="Service" />
 </wsdl:definitions>

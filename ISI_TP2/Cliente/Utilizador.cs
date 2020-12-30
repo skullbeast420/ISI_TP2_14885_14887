@@ -7,19 +7,27 @@ using System.Threading.Tasks;
 
 namespace Cliente
 {
-    public class Utilizador
+    [DataContract]
+	[KnownType(typeof(Utilizador))]
+	public class Utilizador
     {
 
+		[DataMember]
 		public int id { get; set; }
 
+		[DataMember]
 		public string nome { get; set; }
 
+		[DataMember]
 		public string cidade { get; set; }
 
+		[DataMember]
 		public int id_cidade { get; set; }
 
+		[DataMember]
 		public string email { get; set; }
 
+		[DataMember]
 		public string password { get; set; }
 
 		public Utilizador()
@@ -47,4 +55,16 @@ namespace Cliente
 		}
 
 	}
+
+	[DataContract]
+	[KnownType(typeof(Utilizador))]
+	[KnownType(typeof(Utilizadores))]
+	public class Utilizadores
+    {
+
+		[DataMember]
+		public List<Utilizador> utilizadores { get; set; }
+
+    }
+
 }

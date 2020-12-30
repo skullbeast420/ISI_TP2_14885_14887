@@ -17,8 +17,7 @@ namespace Cliente
     public partial class Form1 : Form
     {
 
-        Utilizador currentUser;
-        WCF.ServiceSoapClient WCFapi = new WCF.ServiceSoapClient("SOAPEndpoint");
+        public Utilizador currentUser = new Utilizador();
         DataTable dt = new DataTable();
 
         public Form1()
@@ -49,12 +48,11 @@ namespace Cliente
 
             object resposta;
             string info;
-            Utilizador userAux = new Utilizador();
+            Utilizadores listaAux = new Utilizadores();
             DataContractJsonSerializer jsonSerializer;
             StringBuilder uri = new StringBuilder();
             uri.Append("http://localhost:56385/Service.svc/rest/");
             uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
-
 
             HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
 
@@ -67,35 +65,26 @@ namespace Cliente
                     throw new ApplicationException(message);
                 }
 
+                MemoryStream copyStream = new MemoryStream();
+                response.GetResponseStream().CopyTo(copyStream);
                 jsonSerializer = new DataContractJsonSerializer(typeof(Utilizador));
-                resposta = jsonSerializer.ReadObject(response.GetResponseStream());
-                currentUser = (Utilizador)resposta;
+                copyStream.Position = 0L;
+
+                resposta = (Utilizador)jsonSerializer.ReadObject(copyStream);
+
+                //currentUser = (Utilizador)jsonSerializer.ReadObject(response.GetResponseStream());
+                //currentUser = (Utilizador)jsonSerializer.ReadObject(copyStream);
+
+                Console.WriteLine("debug");
+
+                //ou
+                //Root myclass = (Root)jsonSerializer.ReadObject(response.GetResponseStream());
 
             }
+        }
 
-            /*if (dt.Rows.Count == 0)
-            {
-
-                MessageBox.Show("Os dados estão incorretos. O login foi mal sucedido!");
-
-            }
-
-            else
-            {
-
-                DataRow row = dt.Rows[0];
-
-                currentUser.id = row.Field<int>(dt.Columns[0]);
-                currentUser.nome = row.Field<string>(dt.Columns[1]);
-                currentUser.cidade = row.Field<string>(dt.Columns[2]);
-                currentUser.id_cidade = row.Field<int>(dt.Columns[3]);
-                currentUser.email = row.Field<string>(dt.Columns[4]);
-                currentUser.password = row.Field<string>(dt.Columns[5]);
-
-                MessageBox.Show("Login efetuado com sucesso!");
-
-            }*/
-
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
         }
     }
 }

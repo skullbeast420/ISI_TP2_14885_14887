@@ -26,6 +26,12 @@ namespace Cliente.WCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
         System.Threading.Tasks.Task<string> LoginAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Registo", ReplyAction="http://tempuri.org/IServiceRest/RegistoResponse")]
+        bool Registo(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Registo", ReplyAction="http://tempuri.org/IServiceRest/RegistoResponse")]
+        System.Threading.Tasks.Task<bool> RegistoAsync(string jsonString);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -70,52 +76,13 @@ namespace Cliente.WCF {
         public System.Threading.Tasks.Task<string> LoginAsync(string email, string password) {
             return base.Channel.LoginAsync(email, password);
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCF.IServiceSoap")]
-    public interface IServiceSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap/Registo", ReplyAction="http://tempuri.org/IServiceSoap/RegistoResponse")]
-        bool Registo(string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceSoap/Registo", ReplyAction="http://tempuri.org/IServiceSoap/RegistoResponse")]
-        System.Threading.Tasks.Task<bool> RegistoAsync(string email);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceSoapChannel : Cliente.WCF.IServiceSoap, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceSoapClient : System.ServiceModel.ClientBase<Cliente.WCF.IServiceSoap>, Cliente.WCF.IServiceSoap {
-        
-        public ServiceSoapClient() {
+        public bool Registo(string jsonString) {
+            return base.Channel.Registo(jsonString);
         }
         
-        public ServiceSoapClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public ServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public bool Registo(string email) {
-            return base.Channel.Registo(email);
-        }
-        
-        public System.Threading.Tasks.Task<bool> RegistoAsync(string email) {
-            return base.Channel.RegistoAsync(email);
+        public System.Threading.Tasks.Task<bool> RegistoAsync(string jsonString) {
+            return base.Channel.RegistoAsync(jsonString);
         }
     }
 }
