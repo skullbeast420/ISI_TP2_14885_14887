@@ -70,3 +70,4 @@ C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\
 C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.csproj.CopyComplete
 C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.exe
 C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.pdb
+C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.Forms.Menu.resources

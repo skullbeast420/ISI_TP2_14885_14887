@@ -68,24 +68,32 @@ public class Service : IServiceRest
 
 	public string Login(string email, string password)
 	{
+		string jsonString;
+
 		if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
 		{
-			//string query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='" + email + "' and password='" + password + "'";
 
-			string query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='@email' and password='@password'";
-
+			string query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='" + email + "' and password='" + password + "'";
 
 			dt = db.ExecuteReturnQuery(query);
+
+			//Se encontrar algum utilizador com o mail e a password introduzidos
+			if (dt.Rows.Count != 0)
+			{
+
+				newUser.id = Convert.ToInt32(dt.Rows[0]["id"]);
+				newUser.nome = dt.Rows[0]["nome"].ToString();
+				newUser.cidade = dt.Rows[0]["cidade"].ToString();
+				newUser.id_cidade = Convert.ToInt32(dt.Rows[0]["id_cidade"]);
+				newUser.email = dt.Rows[0]["email"].ToString();
+				newUser.password = dt.Rows[0]["password"].ToString();
+
+			}
+
+			jsonString = JsonConvert.SerializeObject(newUser);
 		}
 
-		newUser.id = Convert.ToInt32(dt.Rows[0]["id"]);
-		newUser.nome = dt.Rows[0]["nome"].ToString();
-		newUser.cidade = dt.Rows[0]["cidade"].ToString();
-		newUser.id_cidade = Convert.ToInt32(dt.Rows[0]["id_cidade"]);
-		newUser.email = dt.Rows[0]["email"].ToString();
-		newUser.password = dt.Rows[0]["password"].ToString();
-
-		string jsonString = JsonConvert.SerializeObject(newUser);
+		else { jsonString = null; }
 
 		return jsonString;
 
@@ -121,9 +129,7 @@ public class Service : IServiceRest
 
 			return true;
 		}
-
 	}
-
 }
 
 public class Locais

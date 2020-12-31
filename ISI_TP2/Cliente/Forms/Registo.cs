@@ -42,6 +42,7 @@ namespace Cliente.Forms
             {
 
                 newForm.currentUser.cidade = comboBox1.GetItemText(comboBox1.SelectedItem.ToString());
+
                 foreach (KeyValuePair<int, string> kvp in listaLocais)
                 {
 
