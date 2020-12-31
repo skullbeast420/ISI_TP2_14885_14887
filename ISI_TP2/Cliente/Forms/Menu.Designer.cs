@@ -439,6 +439,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Name = "Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Menu_Paint);

@@ -130,6 +130,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Connected Services\WCF\Cliente.WCF.Aux.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WCF\Cliente.WCF.Previsao5dias.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

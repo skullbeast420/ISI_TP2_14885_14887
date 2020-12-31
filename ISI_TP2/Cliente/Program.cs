@@ -18,7 +18,22 @@ namespace Cliente
             Application.SetCompatibleTextRenderingDefault(false);
             //Alterar de volta para o Form1 (Login) quando já estiver funcional
             //E quando estiver funcional, ir ao codigo Load do form Menu e retirar a atribuição manual de valores ao newForm.currentuser
-            Application.Run(new Cliente.Forms.Menu());
+            //Application.Run(new Cliente.Forms.Menu());
+            Application.Run(new Form1());
         }
+    }
+
+    public class teste
+    {
+
+        public Utilizador currentUser { get; set; }
+
+        public teste()
+        {
+
+            currentUser = new Utilizador();
+
+        }
+
     }
 }

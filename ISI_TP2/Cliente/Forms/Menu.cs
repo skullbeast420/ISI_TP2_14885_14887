@@ -16,7 +16,6 @@ namespace Cliente.Forms
     {
         Previsao5dias previsao5dias = new Previsao5dias();
         TiposTempo weatherTypes = new TiposTempo();
-        Form1 newForm = new Form1();
 
         public Menu()
         {
@@ -30,10 +29,8 @@ namespace Cliente.Forms
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
-            newForm.currentUser = new Utilizador(6, "Bernardo Lima", "Porto", 1131200, "emailbernasteste@hotmail.com", "passwordteste");
             
-            label2.Text = "Previsão Meteorológica dos próximos 5 dias para a cidade " + newForm.currentUser.cidade + ":";
+            label2.Text = "Previsão Meteorológica dos próximos 5 dias para a cidade " + Form1.test.currentUser.cidade + ":";
             
             #region Pedidos aos serviços
 
@@ -64,7 +61,7 @@ namespace Cliente.Forms
             //Nova uri para aceder ao serviço da previsão para os próximos 5 dias
             uri = new StringBuilder();
             uri.Append("http://localhost:56385/Service.svc/rest/Get5DayWeather/");
-            uri.Append(newForm.currentUser.id_cidade.ToString());
+            uri.Append(Form1.test.currentUser.id_cidade.ToString());
 
             request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
 

@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Data;
-using System.Net;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.Serialization.Json;
-using Newtonsoft.Json;
 using System.IO;
+using System.Net;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Windows.Forms;
+
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Cliente
 {
     public partial class Form1 : Form
     {
 
-        public Utilizador currentUser = new Utilizador();
-        DataTable dt = new DataTable();
+        public static teste test = new teste();
+
+        Cliente.Forms.Menu novoForm = new Cliente.Forms.Menu();
 
         public Form1()
         {
@@ -46,45 +44,57 @@ namespace Cliente
         private void button1_Click(object sender, EventArgs e)
         {
 
-            object resposta;
-            MemoryStream copyStream;
+            Utilizador resposta;
+            string info;
             Utilizadores listaAux = new Utilizadores();
             DataContractJsonSerializer jsonSerializer;
+
             StringBuilder uri = new StringBuilder();
             uri.Append("http://localhost:56385/Service.svc/rest/");
+            //uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
             uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
 
             HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
 
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            //h2
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string json;
+
+            using (var sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
             {
-                // Verificar se não está disponível
-                if (response.StatusCode != HttpStatusCode.OK)
-                {
-                    string message = String.Format("GET falhou. Recebido HTTP {0}", response.StatusCode);
-                    throw new ApplicationException(message);
-                }
+                json = sr.ReadToEnd();
+            }
+            Aux aux = JsonSerializer.Deserialize<Aux>(json);
 
-                copyStream = new MemoryStream();
-                response.GetResponseStream().CopyTo(copyStream);
-                jsonSerializer = new DataContractJsonSerializer(typeof(Utilizador));
-                copyStream.Position = 0L;
+            if (aux.Json == null)
+            {
 
-                resposta = (Utilizador)jsonSerializer.ReadObject(copyStream);
-
-                //currentUser = (Utilizador)jsonSerializer.ReadObject(response.GetResponseStream());
-                //currentUser = (Utilizador)jsonSerializer.ReadObject(copyStream);
-
-                Console.WriteLine("debug");
-
-                //ou
-                //Root myclass = (Root)jsonSerializer.ReadObject(response.GetResponseStream());
+                MessageBox.Show("Os dados introduzidos estão incorretos. Tente Novamente!");
 
             }
+
+            else
+            {
+
+                test.currentUser = JsonSerializer.Deserialize<Utilizador>(aux.Json);
+                MessageBox.Show("Login efetuado com sucesso!");
+                this.Hide();
+                novoForm.ShowDialog();
+                this.Close();
+
+            }
+
+            response.Close();
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

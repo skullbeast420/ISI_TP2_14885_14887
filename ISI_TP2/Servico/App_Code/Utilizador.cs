@@ -66,3 +66,18 @@ public class Utilizadores
 	public List<Utilizador> utilizadores { get; set; }
 
 }
+
+[DataContract]
+public class Aux
+{
+	[DataMember]
+	public string Json { get; set; }
+
+	public Aux() { }
+
+	public Aux(string s)
+	{
+		Json = s;
+	}
+
+}

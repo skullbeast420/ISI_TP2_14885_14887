@@ -172,6 +172,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Registo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registo";
             this.Load += new System.EventHandler(this.Registo_Load);
             this.ResumeLayout(false);

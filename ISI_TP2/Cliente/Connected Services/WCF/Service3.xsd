@@ -53,4 +53,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PrevisaoDia" nillable="true" type="tns:PrevisaoDia" />
+  <xs:complexType name="Aux">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Json" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Aux" nillable="true" type="tns:Aux" />
 </xs:schema>

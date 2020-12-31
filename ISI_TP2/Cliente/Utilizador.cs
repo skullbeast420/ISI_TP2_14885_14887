@@ -67,4 +67,10 @@ namespace Cliente
 
     }
 
+	public class Aux
+	{
+		public string Json { get; set; }
+
+	}
+
 }

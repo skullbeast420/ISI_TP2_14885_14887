@@ -20,7 +20,7 @@ namespace Cliente.Forms
         Dictionary<int, string> listaLocais = new Dictionary<int, string>();
 
         Form1 newForm = new Form1();
-        
+
         public Registo()
         {
             InitializeComponent();
@@ -35,25 +35,25 @@ namespace Cliente.Forms
         {
 
             if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text)
-                || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(comboBox1.GetItemText(comboBox1.SelectedItem.ToString()))) MessageBox.Show("Um ou mais campos não foram preenchidos!");
+                || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(comboBox1.Text)) MessageBox.Show("Um ou mais campos não foram preenchidos!");
 
             else
             {
 
-                newForm.currentUser.cidade = comboBox1.GetItemText(comboBox1.SelectedItem.ToString());
+                Form1.test.currentUser.cidade = comboBox1.Text;
 
                 foreach (KeyValuePair<int, string> kvp in listaLocais)
                 {
 
-                    if (kvp.Value == newForm.currentUser.cidade) newForm.currentUser.id_cidade = kvp.Key;
+                    if (kvp.Value == Form1.test.currentUser.cidade) Form1.test.currentUser.id_cidade = kvp.Key;
 
                 }
 
-                newForm.currentUser.nome = textBox1.Text + " " + textBox2.Text;
-                newForm.currentUser.email = textBox3.Text;
-                newForm.currentUser.password = textBox4.Text;
+                Form1.test.currentUser.nome = textBox1.Text + " " + textBox2.Text;
+                Form1.test.currentUser.email = textBox3.Text;
+                Form1.test.currentUser.password = textBox4.Text;
 
-                string output = JsonConvert.SerializeObject(newForm.currentUser);
+                string output = JsonConvert.SerializeObject(Form1.test.currentUser);
 
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
@@ -63,7 +63,7 @@ namespace Cliente.Forms
                 HttpResponseMessage resposta = await client.PostAsync(url, stringContent);
                 
                 //Falta tratar a resposta bool que é enviada do serviço (true ou false), o que está feito não funciona
-                if (resposta.IsSuccessStatusCode)
+                if (resposta.IsSuccessStatusCode == true)
                 {
 
                     MessageBox.Show("O registo foi efetuado com sucesso! Faça o login com as suas credenciais para aceder à sua Agenda!");
@@ -72,7 +72,7 @@ namespace Cliente.Forms
                     this.Close();
 
                 }
-                else { MessageBox.Show("Já existe um utilizador registado com o E-Mail introduzido. Introduza um E-Mail diferente!"); newForm.currentUser = new Utilizador(); }
+                else if(resposta.IsSuccessStatusCode == false) { MessageBox.Show("Já existe um utilizador registado com o E-Mail introduzido. Introduza um E-Mail diferente!"); Form1.test.currentUser = new Utilizador(); }
 
             }
 

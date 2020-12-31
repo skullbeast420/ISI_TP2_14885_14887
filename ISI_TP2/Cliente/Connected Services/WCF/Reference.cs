@@ -465,6 +465,51 @@ namespace Cliente.WCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Aux", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class Aux : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string JsonField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Json {
+            get {
+                return this.JsonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JsonField, value) != true)) {
+                    this.JsonField = value;
+                    this.RaisePropertyChanged("Json");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCF.IServiceRest")]
     public interface IServiceRest {
@@ -488,10 +533,10 @@ namespace Cliente.WCF {
         System.Threading.Tasks.Task<Cliente.WCF.Previsao5dias> Get5DayWeatherAsync(string idCidade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
-        string Login(string email, string password);
+        Cliente.WCF.Aux Login(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
-        System.Threading.Tasks.Task<string> LoginAsync(string email, string password);
+        System.Threading.Tasks.Task<Cliente.WCF.Aux> LoginAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Registo", ReplyAction="http://tempuri.org/IServiceRest/RegistoResponse")]
         bool Registo(string jsonString);
@@ -551,11 +596,11 @@ namespace Cliente.WCF {
             return base.Channel.Get5DayWeatherAsync(idCidade);
         }
         
-        public string Login(string email, string password) {
+        public Cliente.WCF.Aux Login(string email, string password) {
             return base.Channel.Login(email, password);
         }
         
-        public System.Threading.Tasks.Task<string> LoginAsync(string email, string password) {
+        public System.Threading.Tasks.Task<Cliente.WCF.Aux> LoginAsync(string email, string password) {
             return base.Channel.LoginAsync(email, password);
         }
         

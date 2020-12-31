@@ -135,7 +135,7 @@ public class Service : IServiceRest
 
 	}
 
-	public string Login(string email, string password)
+	public Aux Login(string email, string password)
 	{
 		string jsonString;
 
@@ -157,14 +157,18 @@ public class Service : IServiceRest
 				newUser.email = dt.Rows[0]["email"].ToString();
 				newUser.password = dt.Rows[0]["password"].ToString();
 
+				jsonString = JsonConvert.SerializeObject(newUser);
+
 			}
 
-			jsonString = JsonConvert.SerializeObject(newUser);
+			else { jsonString = null; }
 		}
 
 		else { jsonString = null; }
 
-		return jsonString;
+		Aux aux = new Aux() { Json = jsonString };
+
+		return aux;
 
 	}
 
