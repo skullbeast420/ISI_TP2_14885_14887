@@ -18,7 +18,6 @@ namespace Cliente.Forms
     public partial class Registo : Form
     {
         Dictionary<int, string> listaLocais = new Dictionary<int, string>();
-        WCF.ServiceRestClient WCFapi = new WCF.ServiceRestClient();
 
         Form1 newForm = new Form1();
         

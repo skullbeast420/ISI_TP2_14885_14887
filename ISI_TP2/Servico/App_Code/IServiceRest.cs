@@ -22,6 +22,14 @@ public interface IServiceRest
 	Dictionary<int, string> RetornaCidades();
 
 	[OperationContract]
+	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetWeatherTypes")]
+	TiposTempo GetWeatherTypes();
+
+	[OperationContract]
+	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Get5DayWeather/{idCidade}")]
+	Previsao5dias Get5DayWeather(string idCidade);
+
+	[OperationContract]
 	[WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate ="Login/{email}/{password}")]
 	string Login(string email, string password);
 

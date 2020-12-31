@@ -9,7 +9,461 @@
 //------------------------------------------------------------------------------
 
 namespace Cliente.WCF {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TiposTempo", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class TiposTempo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string countryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Cliente.WCF.Tempo[] dataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ownerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string country {
+            get {
+                return this.countryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.countryField, value) != true)) {
+                    this.countryField = value;
+                    this.RaisePropertyChanged("country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Cliente.WCF.Tempo[] data {
+            get {
+                return this.dataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dataField, value) != true)) {
+                    this.dataField = value;
+                    this.RaisePropertyChanged("data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string owner {
+            get {
+                return this.ownerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ownerField, value) != true)) {
+                    this.ownerField = value;
+                    this.RaisePropertyChanged("owner");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tempo", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class Tempo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descIdWeatherTypeENField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descIdWeatherTypePTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idWeatherTypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descIdWeatherTypeEN {
+            get {
+                return this.descIdWeatherTypeENField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descIdWeatherTypeENField, value) != true)) {
+                    this.descIdWeatherTypeENField = value;
+                    this.RaisePropertyChanged("descIdWeatherTypeEN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descIdWeatherTypePT {
+            get {
+                return this.descIdWeatherTypePTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descIdWeatherTypePTField, value) != true)) {
+                    this.descIdWeatherTypePTField = value;
+                    this.RaisePropertyChanged("descIdWeatherTypePT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idWeatherType {
+            get {
+                return this.idWeatherTypeField;
+            }
+            set {
+                if ((this.idWeatherTypeField.Equals(value) != true)) {
+                    this.idWeatherTypeField = value;
+                    this.RaisePropertyChanged("idWeatherType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Previsao5dias", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class Previsao5dias : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string countryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Cliente.WCF.PrevisaoDia[] dataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string dataUpdateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int globalIdLocalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ownerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string country {
+            get {
+                return this.countryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.countryField, value) != true)) {
+                    this.countryField = value;
+                    this.RaisePropertyChanged("country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Cliente.WCF.PrevisaoDia[] data {
+            get {
+                return this.dataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dataField, value) != true)) {
+                    this.dataField = value;
+                    this.RaisePropertyChanged("data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string dataUpdate {
+            get {
+                return this.dataUpdateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dataUpdateField, value) != true)) {
+                    this.dataUpdateField = value;
+                    this.RaisePropertyChanged("dataUpdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int globalIdLocal {
+            get {
+                return this.globalIdLocalField;
+            }
+            set {
+                if ((this.globalIdLocalField.Equals(value) != true)) {
+                    this.globalIdLocalField = value;
+                    this.RaisePropertyChanged("globalIdLocal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string owner {
+            get {
+                return this.ownerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ownerField, value) != true)) {
+                    this.ownerField = value;
+                    this.RaisePropertyChanged("owner");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PrevisaoDia", Namespace="http://schemas.datacontract.org/2004/07/")]
+    [System.SerializableAttribute()]
+    public partial class PrevisaoDia : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int classPrecIntField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int classWindSpeedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string forecastDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idWeatherTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string latitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string longitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string precipitaProbField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string predWindDirField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tMaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tMinField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int classPrecInt {
+            get {
+                return this.classPrecIntField;
+            }
+            set {
+                if ((this.classPrecIntField.Equals(value) != true)) {
+                    this.classPrecIntField = value;
+                    this.RaisePropertyChanged("classPrecInt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int classWindSpeed {
+            get {
+                return this.classWindSpeedField;
+            }
+            set {
+                if ((this.classWindSpeedField.Equals(value) != true)) {
+                    this.classWindSpeedField = value;
+                    this.RaisePropertyChanged("classWindSpeed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string forecastDate {
+            get {
+                return this.forecastDateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.forecastDateField, value) != true)) {
+                    this.forecastDateField = value;
+                    this.RaisePropertyChanged("forecastDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idWeatherType {
+            get {
+                return this.idWeatherTypeField;
+            }
+            set {
+                if ((this.idWeatherTypeField.Equals(value) != true)) {
+                    this.idWeatherTypeField = value;
+                    this.RaisePropertyChanged("idWeatherType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string latitude {
+            get {
+                return this.latitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.latitudeField, value) != true)) {
+                    this.latitudeField = value;
+                    this.RaisePropertyChanged("latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string longitude {
+            get {
+                return this.longitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.longitudeField, value) != true)) {
+                    this.longitudeField = value;
+                    this.RaisePropertyChanged("longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string precipitaProb {
+            get {
+                return this.precipitaProbField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.precipitaProbField, value) != true)) {
+                    this.precipitaProbField = value;
+                    this.RaisePropertyChanged("precipitaProb");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string predWindDir {
+            get {
+                return this.predWindDirField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.predWindDirField, value) != true)) {
+                    this.predWindDirField = value;
+                    this.RaisePropertyChanged("predWindDir");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tMax {
+            get {
+                return this.tMaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tMaxField, value) != true)) {
+                    this.tMaxField = value;
+                    this.RaisePropertyChanged("tMax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tMin {
+            get {
+                return this.tMinField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tMinField, value) != true)) {
+                    this.tMinField = value;
+                    this.RaisePropertyChanged("tMin");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCF.IServiceRest")]
@@ -20,6 +474,18 @@ namespace Cliente.WCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/RetornaCidades", ReplyAction="http://tempuri.org/IServiceRest/RetornaCidadesResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RetornaCidadesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/GetWeatherTypes", ReplyAction="http://tempuri.org/IServiceRest/GetWeatherTypesResponse")]
+        Cliente.WCF.TiposTempo GetWeatherTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/GetWeatherTypes", ReplyAction="http://tempuri.org/IServiceRest/GetWeatherTypesResponse")]
+        System.Threading.Tasks.Task<Cliente.WCF.TiposTempo> GetWeatherTypesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Get5DayWeather", ReplyAction="http://tempuri.org/IServiceRest/Get5DayWeatherResponse")]
+        Cliente.WCF.Previsao5dias Get5DayWeather(string idCidade);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Get5DayWeather", ReplyAction="http://tempuri.org/IServiceRest/Get5DayWeatherResponse")]
+        System.Threading.Tasks.Task<Cliente.WCF.Previsao5dias> Get5DayWeatherAsync(string idCidade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
         string Login(string email, string password);
@@ -67,6 +533,22 @@ namespace Cliente.WCF {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> RetornaCidadesAsync() {
             return base.Channel.RetornaCidadesAsync();
+        }
+        
+        public Cliente.WCF.TiposTempo GetWeatherTypes() {
+            return base.Channel.GetWeatherTypes();
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.WCF.TiposTempo> GetWeatherTypesAsync() {
+            return base.Channel.GetWeatherTypesAsync();
+        }
+        
+        public Cliente.WCF.Previsao5dias Get5DayWeather(string idCidade) {
+            return base.Channel.Get5DayWeather(idCidade);
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.WCF.Previsao5dias> Get5DayWeatherAsync(string idCidade) {
+            return base.Channel.Get5DayWeatherAsync(idCidade);
         }
         
         public string Login(string email, string password) {

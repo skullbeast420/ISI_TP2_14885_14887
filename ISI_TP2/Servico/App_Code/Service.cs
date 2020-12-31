@@ -66,6 +66,75 @@ public class Service : IServiceRest
 		return locais;
 	}
 
+	/// <summary>
+	/// Acede à API do IPMA para obter os diferentes tipos de tempo e as suas descrições em PT e em EN
+	/// </summary>
+	/// <returns></returns>
+	public TiposTempo GetWeatherTypes()
+    {
+
+		StringBuilder uri = new StringBuilder();
+
+		TiposTempo weatherTypes = new TiposTempo();
+
+		uri.Append("https://api.ipma.pt/open-data/weather-type-classe.json");
+
+		HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
+
+		using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+		{
+
+			if (response.StatusCode != HttpStatusCode.OK)
+			{
+
+				string message = string.Format("GET falhou. HTTP recebido {0}", response.StatusCode);
+				throw new ApplicationException(message);
+
+			}
+
+			DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(TiposTempo));
+			object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
+			weatherTypes = (TiposTempo)objResponse;
+
+		}
+
+		return weatherTypes;
+
+	}
+
+	public Previsao5dias Get5DayWeather(string idCidade)
+    {
+
+		StringBuilder uri = new StringBuilder();
+
+		Previsao5dias previsao = new Previsao5dias();
+
+		uri.Append("https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/");
+		uri.Append(idCidade + ".json");
+
+		HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
+
+		using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+		{
+
+			if (response.StatusCode != HttpStatusCode.OK)
+			{
+
+				string message = string.Format("GET falhou. HTTP recebido {0}", response.StatusCode);
+				throw new ApplicationException(message);
+
+			}
+
+			DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(Previsao5dias));
+			object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
+			previsao = (Previsao5dias)objResponse;
+
+		}
+
+		return previsao;
+
+	}
+
 	public string Login(string email, string password)
 	{
 		string jsonString;
@@ -129,26 +198,8 @@ public class Service : IServiceRest
 
 			return true;
 		}
+
 	}
 }
 
-public class Locais
-{
 
-	public string owner { get; set; }
-	public string country { get; set; }
-	public List<Local> data { get; set; }
-
-}
-
-public class Local
-{
-	public int idRegiao { get; set; }
-	public string idAreaAviso { get; set; }
-	public int idConcelho { get; set; }
-	public int globalIdLocal { get; set; }
-	public string latitude { get; set; }
-	public int idDistrito { get; set; }
-	public string local { get; set; }
-	public string longitude { get; set; }
-}

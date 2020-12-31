@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:56385/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceRest_RetornaCidades_InputMessage">
@@ -12,6 +13,18 @@
   </wsdl:message>
   <wsdl:message name="IServiceRest_RetornaCidades_OutputMessage">
     <wsdl:part name="parameters" element="tns:RetornaCidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_GetWeatherTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWeatherTypes" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_GetWeatherTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWeatherTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_Get5DayWeather_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get5DayWeather" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_Get5DayWeather_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get5DayWeatherResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceRest_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
@@ -29,6 +42,14 @@
     <wsdl:operation name="RetornaCidades">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/RetornaCidades" message="tns:IServiceRest_RetornaCidades_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/RetornaCidadesResponse" message="tns:IServiceRest_RetornaCidades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWeatherTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/GetWeatherTypes" message="tns:IServiceRest_GetWeatherTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/GetWeatherTypesResponse" message="tns:IServiceRest_GetWeatherTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get5DayWeather">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Get5DayWeather" message="tns:IServiceRest_Get5DayWeather_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/Get5DayWeatherResponse" message="tns:IServiceRest_Get5DayWeather_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Login" message="tns:IServiceRest_Login_InputMessage" />

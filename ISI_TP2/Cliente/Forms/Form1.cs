@@ -47,7 +47,7 @@ namespace Cliente
         {
 
             object resposta;
-            string info;
+            MemoryStream copyStream;
             Utilizadores listaAux = new Utilizadores();
             DataContractJsonSerializer jsonSerializer;
             StringBuilder uri = new StringBuilder();
@@ -65,7 +65,7 @@ namespace Cliente
                     throw new ApplicationException(message);
                 }
 
-                MemoryStream copyStream = new MemoryStream();
+                copyStream = new MemoryStream();
                 response.GetResponseStream().CopyTo(copyStream);
                 jsonSerializer = new DataContractJsonSerializer(typeof(Utilizador));
                 copyStream.Position = 0L;
