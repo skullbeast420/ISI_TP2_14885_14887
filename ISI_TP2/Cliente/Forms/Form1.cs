@@ -44,8 +44,6 @@ namespace Cliente
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Utilizador resposta;
-            string info;
             Utilizadores listaAux = new Utilizadores();
             DataContractJsonSerializer jsonSerializer;
 
@@ -93,6 +91,11 @@ namespace Cliente
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

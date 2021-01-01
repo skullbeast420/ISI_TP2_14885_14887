@@ -21,6 +21,8 @@ public class Service : IServiceRest
 	DataBase db = new DataBase();
 	DataTable dt = new DataTable();
 	Utilizador newUser = new Utilizador();
+	Evento evento = new Evento();
+	List<Evento> listaEventos = new List<Evento>();
 
 	/// <summary>
 	/// Acede à API do IPMA para obter os nomes das cidades e os seus idglobal's
@@ -170,6 +172,44 @@ public class Service : IServiceRest
 
 		return aux;
 
+	}
+
+	public Aux GetEventos(string id_utilizador)
+	{
+		string jsonString;
+
+		string query = "select * from Evento where id_utilizador='" + id_utilizador + "'";
+
+		dt = db.ExecuteReturnQuery(query);
+
+		//Caso encontre os eventos do utilizador inserido
+		if (dt.Rows.Count != 0)
+		{
+
+			foreach(DataRow linha in dt.Rows)
+            {
+				//O new Evento tem como objetivo eliminar o overwrite que acontecia com a variavel evento
+				evento = new Evento(
+				Convert.ToInt32(linha["id"].ToString()),
+				Convert.ToDateTime(linha["data"]),
+				linha["titulo"].ToString(),
+				linha["descricao"].ToString(),
+				Convert.ToInt32(linha["id_utilizador"])
+				);
+
+				listaEventos.Add(evento);
+            }
+			
+			jsonString = JsonConvert.SerializeObject(listaEventos);
+
+		}
+
+		else { jsonString = null; }
+		
+
+		Aux aux = new Aux() { Json = jsonString };
+
+		return aux;
 	}
 
 	public async Task<bool> Registo(string jsonString)

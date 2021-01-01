@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace Cliente.Forms
@@ -16,6 +13,9 @@ namespace Cliente.Forms
     {
         Previsao5dias previsao5dias = new Previsao5dias();
         TiposTempo weatherTypes = new TiposTempo();
+        List<Evento> listaEventos = new List<Evento>();
+
+        Evento evento = new Evento();
 
         public Menu()
         {
@@ -29,9 +29,9 @@ namespace Cliente.Forms
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            
+
             label2.Text = "Previsão Meteorológica dos próximos 5 dias para a cidade " + Form1.test.currentUser.cidade + ":";
-            
+
             #region Pedidos aos serviços
 
             object resposta;
@@ -80,6 +80,35 @@ namespace Cliente.Forms
                 previsao5dias = (Previsao5dias)resposta;
             }
 
+
+            //Nova uri para aceder aos eventos do utilizador
+            uri = new StringBuilder();
+            uri.Append("http://localhost:56385/Service.svc/rest/GetEventos/");
+            uri.Append(Form1.test.currentUser.id.ToString());
+
+            request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
+
+            response = (HttpWebResponse)request.GetResponse();
+            string json;
+
+            using (var sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                json = sr.ReadToEnd();
+            }
+            Aux aux = JsonSerializer.Deserialize<Aux>(json);
+
+            if (aux.Json != null)
+            {
+
+                listaEventos = JsonSerializer.Deserialize<List<Evento>>(aux.Json);
+                foreach (Evento evento in listaEventos)
+                {
+                    string[] row = new string[] { evento.data.ToString(), evento.titulo.ToString(), evento.descricao.ToString() };
+                    dataGridView1.Rows.Add(row);
+                }
+                
+            }
+
             #endregion
 
             PrimeiroDia();
@@ -96,8 +125,8 @@ namespace Cliente.Forms
         {
 
             label3.Text = previsao5dias.data[0].forecastDate;
-            
-            foreach(Tempo m in weatherTypes.data)
+
+            foreach (Tempo m in weatherTypes.data)
             {
 
                 if (previsao5dias.data[0].idWeatherType == m.idWeatherType) label5.Text = m.descIdWeatherTypePT;
@@ -193,6 +222,5 @@ namespace Cliente.Forms
         }
 
         #endregion
-
     }
 }

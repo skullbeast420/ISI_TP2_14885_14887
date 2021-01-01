@@ -55,6 +55,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetEventos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_utilizador" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="GetEventosResult" nillable="true" type="q5:Aux" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Registo">
     <xs:complexType>
       <xs:sequence>

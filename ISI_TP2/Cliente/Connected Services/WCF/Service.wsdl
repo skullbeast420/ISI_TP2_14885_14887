@@ -32,6 +32,12 @@
   <wsdl:message name="IServiceRest_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceRest_GetEventos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventos" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_GetEventos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventosResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceRest_Registo_InputMessage">
     <wsdl:part name="parameters" element="tns:Registo" />
   </wsdl:message>
@@ -54,6 +60,10 @@
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Login" message="tns:IServiceRest_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/LoginResponse" message="tns:IServiceRest_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/GetEventos" message="tns:IServiceRest_GetEventos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/GetEventosResponse" message="tns:IServiceRest_GetEventos_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Registo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Registo" message="tns:IServiceRest_Registo_InputMessage" />

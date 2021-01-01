@@ -538,6 +538,12 @@ namespace Cliente.WCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Login", ReplyAction="http://tempuri.org/IServiceRest/LoginResponse")]
         System.Threading.Tasks.Task<Cliente.WCF.Aux> LoginAsync(string email, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/GetEventos", ReplyAction="http://tempuri.org/IServiceRest/GetEventosResponse")]
+        Cliente.WCF.Aux GetEventos(string id_utilizador);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/GetEventos", ReplyAction="http://tempuri.org/IServiceRest/GetEventosResponse")]
+        System.Threading.Tasks.Task<Cliente.WCF.Aux> GetEventosAsync(string id_utilizador);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Registo", ReplyAction="http://tempuri.org/IServiceRest/RegistoResponse")]
         bool Registo(string jsonString);
         
@@ -602,6 +608,14 @@ namespace Cliente.WCF {
         
         public System.Threading.Tasks.Task<Cliente.WCF.Aux> LoginAsync(string email, string password) {
             return base.Channel.LoginAsync(email, password);
+        }
+        
+        public Cliente.WCF.Aux GetEventos(string id_utilizador) {
+            return base.Channel.GetEventos(id_utilizador);
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.WCF.Aux> GetEventosAsync(string id_utilizador) {
+            return base.Channel.GetEventosAsync(id_utilizador);
         }
         
         public bool Registo(string jsonString) {
