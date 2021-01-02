@@ -56,17 +56,6 @@ namespace Cliente
 
 	}
 
-	[DataContract]
-	[KnownType(typeof(Utilizador))]
-	[KnownType(typeof(Utilizadores))]
-	public class Utilizadores
-    {
-
-		[DataMember]
-		public List<Utilizador> utilizadores { get; set; }
-
-    }
-
 	public class Aux
 	{
 		public string Json { get; set; }

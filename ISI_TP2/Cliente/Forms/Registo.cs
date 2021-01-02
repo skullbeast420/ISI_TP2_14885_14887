@@ -120,5 +120,21 @@ namespace Cliente.Forms
 
 
         }
+
+        /// <summary>
+        /// Botão para retornar ao menu de login
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            Form1.test.currentUser = new Utilizador();
+
+            this.Hide();
+            newForm.ShowDialog();
+            this.Close();
+
+        }
     }
 }

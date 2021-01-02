@@ -57,17 +57,6 @@ public class Utilizador
 }
 
 [DataContract]
-[KnownType(typeof(Utilizador))]
-[KnownType(typeof(Utilizadores))]
-public class Utilizadores
-{
-
-	[DataMember]
-	public List<Utilizador> utilizadores { get; set; }
-
-}
-
-[DataContract]
 public class Aux
 {
 	[DataMember]

@@ -549,6 +549,24 @@ namespace Cliente.WCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/Registo", ReplyAction="http://tempuri.org/IServiceRest/RegistoResponse")]
         System.Threading.Tasks.Task<bool> RegistoAsync(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/AddEvento", ReplyAction="http://tempuri.org/IServiceRest/AddEventoResponse")]
+        bool AddEvento(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/AddEvento", ReplyAction="http://tempuri.org/IServiceRest/AddEventoResponse")]
+        System.Threading.Tasks.Task<bool> AddEventoAsync(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/DeleteEvento", ReplyAction="http://tempuri.org/IServiceRest/DeleteEventoResponse")]
+        bool DeleteEvento(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/DeleteEvento", ReplyAction="http://tempuri.org/IServiceRest/DeleteEventoResponse")]
+        System.Threading.Tasks.Task<bool> DeleteEventoAsync(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/UpdateEvento", ReplyAction="http://tempuri.org/IServiceRest/UpdateEventoResponse")]
+        bool UpdateEvento(string jsonString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceRest/UpdateEvento", ReplyAction="http://tempuri.org/IServiceRest/UpdateEventoResponse")]
+        System.Threading.Tasks.Task<bool> UpdateEventoAsync(string jsonString);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -624,6 +642,30 @@ namespace Cliente.WCF {
         
         public System.Threading.Tasks.Task<bool> RegistoAsync(string jsonString) {
             return base.Channel.RegistoAsync(jsonString);
+        }
+        
+        public bool AddEvento(string jsonString) {
+            return base.Channel.AddEvento(jsonString);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddEventoAsync(string jsonString) {
+            return base.Channel.AddEventoAsync(jsonString);
+        }
+        
+        public bool DeleteEvento(string jsonString) {
+            return base.Channel.DeleteEvento(jsonString);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteEventoAsync(string jsonString) {
+            return base.Channel.DeleteEventoAsync(jsonString);
+        }
+        
+        public bool UpdateEvento(string jsonString) {
+            return base.Channel.UpdateEvento(jsonString);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateEventoAsync(string jsonString) {
+            return base.Channel.UpdateEventoAsync(jsonString);
         }
     }
 }

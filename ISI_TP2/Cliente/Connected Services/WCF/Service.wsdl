@@ -44,6 +44,24 @@
   <wsdl:message name="IServiceRest_Registo_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceRest_AddEvento_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEvento" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_AddEvento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEventoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_DeleteEvento_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEvento" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_DeleteEvento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEventoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_UpdateEvento_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEvento" />
+  </wsdl:message>
+  <wsdl:message name="IServiceRest_UpdateEvento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEventoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceRest">
     <wsdl:operation name="RetornaCidades">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/RetornaCidades" message="tns:IServiceRest_RetornaCidades_InputMessage" />
@@ -68,6 +86,18 @@
     <wsdl:operation name="Registo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/Registo" message="tns:IServiceRest_Registo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/RegistoResponse" message="tns:IServiceRest_Registo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEvento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/AddEvento" message="tns:IServiceRest_AddEvento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/AddEventoResponse" message="tns:IServiceRest_AddEvento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/DeleteEvento" message="tns:IServiceRest_DeleteEvento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/DeleteEventoResponse" message="tns:IServiceRest_DeleteEvento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceRest/UpdateEvento" message="tns:IServiceRest_UpdateEvento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceRest/UpdateEventoResponse" message="tns:IServiceRest_UpdateEvento_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Service" />

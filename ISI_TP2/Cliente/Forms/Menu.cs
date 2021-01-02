@@ -13,7 +13,9 @@ namespace Cliente.Forms
     {
         Previsao5dias previsao5dias = new Previsao5dias();
         TiposTempo weatherTypes = new TiposTempo();
-        List<Evento> listaEventos = new List<Evento>();
+        public List<Evento> listaEventos = new List<Evento>();
+        static AdicionarEvento newAdicionarEvento = new AdicionarEvento();
+        static Form1 newForm = new Form1();
 
         Evento evento = new Evento();
 
@@ -103,8 +105,14 @@ namespace Cliente.Forms
                 listaEventos = JsonSerializer.Deserialize<List<Evento>>(aux.Json);
                 foreach (Evento evento in listaEventos)
                 {
-                    string[] row = new string[] { evento.data.ToString(), evento.titulo.ToString(), evento.descricao.ToString() };
-                    dataGridView1.Rows.Add(row);
+                    if(evento.data >= DateTime.Now)
+                    {
+
+                        string[] row = new string[] { evento.id.ToString() ,evento.data.ToString(), evento.titulo.ToString(), evento.descricao.ToString() };
+                        dataGridView1.Rows.Add(row);
+
+                    }
+
                 }
                 
             }
@@ -222,5 +230,85 @@ namespace Cliente.Forms
         }
 
         #endregion
+
+        /// <summary>
+        /// Botão para adicionar evento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            newAdicionarEvento.ShowDialog();
+            this.Close();
+        }
+
+        /// <summary>
+        /// Botão para alterar evento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listaEventos.Count == 0) { MessageBox.Show("Não foram encontrados eventos criados por si! Crie um evento primeiro!"); }
+
+            else
+            {
+
+                //Envia 1 como parâmetro para o SelectForm saber que tem de abrir o form para ALTERAR o evento
+                SelectEvento newSelectEvento = new SelectEvento(listaEventos, 1);
+
+                this.Hide();
+                newSelectEvento.ShowDialog();
+                this.Close();
+
+            }
+        }
+
+        /// <summary>
+        /// Botão para remover evento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (listaEventos.Count == 0) { MessageBox.Show("Não foram encontrados eventos criados por si! Crie um evento primeiro!"); }
+
+            else
+            {
+
+                //Envia 2 como parâmetro para o SelectForm saber que tem de abrir o form para APAGAR o evento
+                SelectEvento newSelectEvento = new SelectEvento(listaEventos, 2);
+
+                this.Hide();
+                newSelectEvento.ShowDialog();
+                this.Close();
+
+            }
+
+        }
+
+        /// <summary>
+        /// Botão para sair
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dialogResult = MessageBox.Show("Deseja sair da aplicação?", "Logout", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                Form1.test.currentUser = new Utilizador();
+                
+                this.Hide();
+                newForm.ShowDialog();
+                this.Close();
+
+            }
+
+        }
     }
 }

@@ -145,3 +145,7 @@ C:\Users\Bernas\Desktop\ISI_TP2_14885_14887\ISI_TP2_14885_14887\ISI_TP2\Cliente\
 C:\Users\Bernas\Desktop\ISI_TP2_14885_14887\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.csproj.CopyComplete
 C:\Users\Bernas\Desktop\ISI_TP2_14885_14887\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.exe
 C:\Users\Bernas\Desktop\ISI_TP2_14885_14887\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.pdb
+C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.Forms.SelectEvento.resources
+C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.Forms.AdicionarEvento.resources
+C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.Forms.ApagarEvento.resources
+C:\Users\Bernas\Desktop\Repositorio_ISI\ISI_TP2_14885_14887\ISI_TP2\Cliente\obj\Debug\Cliente.Forms.AlterarEvento.resources

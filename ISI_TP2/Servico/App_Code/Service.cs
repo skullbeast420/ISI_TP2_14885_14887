@@ -212,19 +212,53 @@ public class Service : IServiceRest
 		return aux;
 	}
 
-	public async Task<bool> Registo(string jsonString)
+	public async Task<bool> AddEvento(string jsonString)
     {
 
 		int numeroLinhas;
+
+		Evento eventoDeserialized = JsonConvert.DeserializeObject<Evento>(jsonString);
+
+		string query = "select id, data, titulo, descricao, id_utilizador from evento where data='"+ eventoDeserialized.data.ToString() +
+			"' and titulo='"+ eventoDeserialized.titulo +"' and descricao='"+ eventoDeserialized.descricao +"' and id_utilizador='"+ eventoDeserialized.id_utilizador +"';";
+
+		dt = db.ExecuteReturnQuery(query);
+
+		if (dt.Rows.Count > 0)
+		{ await Task.Delay(1000); return false; }
+
+        else
+        {
+
+			query = "select * from evento;";
+
+			dt = db.ExecuteReturnQuery(query);
+
+			int numeroID = dt.Rows.Count + 1;
+
+			eventoDeserialized.id = numeroID;
+
+			numeroLinhas = db.ExecuteInsertEvento(eventoDeserialized);
+
+			return true;
+
+		}
+
+	}
+	
+	public async Task<bool> Registo(string jsonString)
+    {
+
+		int numeroLinhas; string query;
 		
 		Utilizador userDeserialized = JsonConvert.DeserializeObject<Utilizador>(jsonString);
 
-		string query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='" + userDeserialized.email + "'";
+		query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='"+ userDeserialized.email +"'";
 
 		dt = db.ExecuteReturnQuery(query);
 
 		if (dt.Rows.Count > 0) 
-		{ await Task.Delay(3000); return false; }
+		{ await Task.Delay(1000); return false; }
 
 		else
 		{
@@ -235,10 +269,42 @@ public class Service : IServiceRest
 
 			int numeroID = dt.Rows.Count + 1;
 
+			userDeserialized.id = numeroID;
+
 			numeroLinhas = db.ExecuteInsertUser(userDeserialized);
 
 			return true;
 		}
+
+	}
+
+	public async Task<bool> DeleteEvento(string jsonString)
+    {
+
+		await Task.Delay(1000);
+
+		int numeroLinhas;
+
+		Evento eventoDeserialized = JsonConvert.DeserializeObject<Evento>(jsonString);
+
+		numeroLinhas = db.ExecuteDeleteEvento(eventoDeserialized);
+
+		return true;
+
+    }
+
+	public async Task<bool> UpdateEvento(string jsonString)
+    {
+
+		await Task.Delay(1000);
+
+		int numeroLinhas;
+
+		Evento eventoDeserialized = JsonConvert.DeserializeObject<Evento>(jsonString);
+
+		numeroLinhas = db.ExecuteUpdateEvento(eventoDeserialized);
+
+		return true;
 
 	}
 }

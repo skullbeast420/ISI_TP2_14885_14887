@@ -44,9 +44,6 @@ namespace Cliente
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Utilizadores listaAux = new Utilizadores();
-            DataContractJsonSerializer jsonSerializer;
-
             StringBuilder uri = new StringBuilder();
             uri.Append("http://localhost:56385/Service.svc/rest/");
             //uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);

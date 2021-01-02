@@ -41,6 +41,16 @@ public interface IServiceRest
 	[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "Registo/?jsonString={jsonString}")]
 	Task<bool> Registo(string jsonString);
 
-	//Registo?jsonString={jsonString}
+	[OperationContract]
+	[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "AddEvento/?jsonString={jsonString}")]
+	Task<bool> AddEvento(string jsonString);
+
+	[OperationContract]
+	[WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "DeleteEvento/?jsonString={jsonString}")]
+	Task<bool> DeleteEvento(string jsonString);
+
+	[OperationContract]
+	[WebInvoke(Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "UpdateEvento/?jsonString={jsonString}")]
+	Task<bool> UpdateEvento(string jsonString);
 
 }

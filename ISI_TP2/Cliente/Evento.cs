@@ -67,14 +67,3 @@ public class Evento
 	}
 
 }
-
-[DataContract]
-[KnownType(typeof(Evento))]
-[KnownType(typeof(Eventos))]
-public class Eventos
-{
-
-	[DataMember]
-	public List<Evento> listaEventos { get; set; }
-
-}
