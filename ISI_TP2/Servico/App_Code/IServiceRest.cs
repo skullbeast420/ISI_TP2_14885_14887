@@ -38,7 +38,9 @@ public interface IServiceRest
 	Aux GetEventos(string id_utilizador);
 
 	[OperationContract]
-	[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "Registo?jsonString={jsonString}")]
+	[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, UriTemplate = "Registo/?jsonString={jsonString}")]
 	Task<bool> Registo(string jsonString);
+
+	//Registo?jsonString={jsonString}
 
 }

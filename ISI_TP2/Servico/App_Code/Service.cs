@@ -235,10 +235,7 @@ public class Service : IServiceRest
 
 			int numeroID = dt.Rows.Count + 1;
 
-			query = "INSERT INTO Utilizador(ID, Nome, Cidade, Id_Cidade, Email, Password) VALUES (" + numeroID + ", '" + userDeserialized.nome + "', '" + userDeserialized.cidade
-				+ "', " + userDeserialized.id_cidade + ", '" + userDeserialized.email + "', '" + userDeserialized.password + "')";
-
-			numeroLinhas = db.ExecuteQuery(query);
+			numeroLinhas = db.ExecuteInsertUser(userDeserialized);
 
 			return true;
 		}

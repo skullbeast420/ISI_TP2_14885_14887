@@ -57,7 +57,7 @@ namespace Cliente.Forms
 
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
-                string url = "http://localhost:56385/Service.svc/rest/Registo?jsonString=" + output;
+                string url = "http://localhost:56385/Service.svc/rest/Registo/?jsonString=" + output;
                 HttpClient client = new HttpClient();
 
                 HttpResponseMessage resposta = await client.PostAsync(url, stringContent);
