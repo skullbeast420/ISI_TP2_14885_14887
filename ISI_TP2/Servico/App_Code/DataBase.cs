@@ -19,7 +19,7 @@ public class DataBase
     
     private static string host = "localhost";
     private static string username = "postgres";
-    private static string password = "guardasol23";
+    private static string password = "1307";
     private static string database = "ISI_TP2_Agenda";
 
     private static string connectionString = "Host=" + host + ";Username=" + username + ";Password=" + password + ";Database=" + database;

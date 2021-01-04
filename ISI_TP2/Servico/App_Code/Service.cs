@@ -190,7 +190,7 @@ public class Service : IServiceRest
             {
 				//O new Evento tem como objetivo eliminar o overwrite que acontecia com a variavel evento
 				evento = new Evento(
-				Convert.ToInt32(linha["id"].ToString()),
+				Convert.ToInt32(linha["id"]),
 				Convert.ToDateTime(linha["data"]),
 				linha["titulo"].ToString(),
 				linha["descricao"].ToString(),
