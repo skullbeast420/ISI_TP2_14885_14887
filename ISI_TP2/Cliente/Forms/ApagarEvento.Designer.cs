@@ -110,6 +110,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ApagarEvento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Apagar Evento";
             this.Load += new System.EventHandler(this.ApagarEvento_Load);
             this.ResumeLayout(false);

@@ -38,15 +38,13 @@ namespace Cliente.Forms
         {
             textBox1.Text = evento.titulo;
             textBox2.Text = evento.descricao;
-            textBox3.Text = evento.data.Hour.ToString();
-            textBox4.Text = evento.data.Minute.ToString();
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
             DateTime newData = DateTime.Parse(monthCalendar1.SelectionRange.Start.ToString());
 
-            if (textBox1.Text == evento.titulo && newData == evento.data && evento.descricao == textBox3.Text)
+            if (textBox1.Text == evento.titulo && newData == evento.data)
             {
 
                 MessageBox.Show("Nada foi alterado!");

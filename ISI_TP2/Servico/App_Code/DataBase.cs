@@ -16,13 +16,8 @@ public class DataBase
 
 
     }
-    
-    private static string host = "localhost";
-    private static string username = "postgres";
-    private static string password = "guardasol23";
-    private static string database = "ISI_TP2_Agenda";
 
-    private static string connectionString = "Host=" + host + ";Username=" + username + ";Password=" + password + ";Database=" + database;
+    private static string connectionString = "Server=isitp2server.postgres.database.azure.com;Database=isi_tp2;Port=5432;User Id=Bernas@isitp2server;Password=Guardasol23;Ssl Mode=Require;";
 
     public int ExecuteInsertEvento(Evento evento)
     {
@@ -45,7 +40,6 @@ public class DataBase
                 return command.ExecuteNonQuery();
             }
         }
-
     }
 
     public DataTable ExecuteReturnQuery(string query)

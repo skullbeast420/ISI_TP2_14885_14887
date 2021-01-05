@@ -105,14 +105,8 @@ namespace Cliente.Forms
                 listaEventos = JsonSerializer.Deserialize<List<Evento>>(aux.Json);
                 foreach (Evento evento in listaEventos)
                 {
-                    if(evento.data >= DateTime.Now)
-                    {
-
-                        string[] row = new string[] { evento.id.ToString() ,evento.data.ToString(), evento.titulo.ToString(), evento.descricao.ToString() };
+                        string[] row = new string[] { evento.id.ToString() ,evento.data.ToShortDateString(), evento.titulo.ToString(), evento.descricao.ToString() };
                         dataGridView1.Rows.Add(row);
-
-                    }
-
                 }
                 
             }

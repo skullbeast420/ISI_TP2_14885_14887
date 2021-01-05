@@ -36,7 +36,7 @@ namespace Cliente.Forms
         private void ApagarEvento_Load(object sender, EventArgs e)
         {
             label1.Text = "Título do evento: " + evento.titulo;
-            label2.Text = "Data do evento: " + evento.data.ToString();
+            label2.Text = "Data do evento: " + evento.data.ToShortDateString();
             label3.Text = "Descrição do evento: " + evento.descricao;
         }
 

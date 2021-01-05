@@ -219,8 +219,8 @@ public class Service : IServiceRest
 
 		Evento eventoDeserialized = JsonConvert.DeserializeObject<Evento>(jsonString);
 
-		string query = "select id, data, titulo, descricao, id_utilizador from evento where data='"+ eventoDeserialized.data.ToString() +
-			"' and titulo='"+ eventoDeserialized.titulo +"' and descricao='"+ eventoDeserialized.descricao +"' and id_utilizador='"+ eventoDeserialized.id_utilizador +"';";
+		string query = "select id, data, titulo, descricao, id_utilizador from evento where data= TO_DATE('" + eventoDeserialized.data.ToShortDateString() +
+			"', 'DD/MM/YYYY') and titulo='" + eventoDeserialized.titulo +"' and descricao='"+ eventoDeserialized.descricao +"' and id_utilizador="+ eventoDeserialized.id_utilizador +";";
 
 		dt = db.ExecuteReturnQuery(query);
 

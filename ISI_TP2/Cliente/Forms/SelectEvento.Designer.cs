@@ -82,6 +82,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "SelectEvento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selecionar Evento";
             this.ResumeLayout(false);
             this.PerformLayout();

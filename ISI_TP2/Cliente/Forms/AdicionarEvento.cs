@@ -47,12 +47,7 @@ namespace Cliente.Forms
         private async void button2_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) || string.IsNullOrWhiteSpace(textBox3.Text)
-                || string.IsNullOrWhiteSpace(textBox4.Text)) MessageBox.Show("Um ou mais campos não foram preenchidos!");
-
-            else if (Convert.ToInt32(textBox3.Text) < 0 || Convert.ToInt32(textBox3.Text) > 23) MessageBox.Show("O valor introduzido para as horas está incorreto!");
-
-            else if (Convert.ToInt32(textBox4.Text) < 0 || Convert.ToInt32(textBox4.Text) > 59) MessageBox.Show("O valor introduzido para os minutos está incorreto!");
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text)) MessageBox.Show("Um ou mais campos não foram preenchidos!");
 
             else
             {
@@ -60,7 +55,7 @@ namespace Cliente.Forms
                 evento.titulo = textBox1.Text;
                 evento.descricao = textBox2.Text;
                 evento.data = DateTime.Parse(monthCalendar1.SelectionRange.Start.ToString());
-                evento.data = new DateTime(evento.data.Year, evento.data.Month, evento.data.Day, Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), 0);
+                evento.data = new DateTime(evento.data.Year, evento.data.Month, evento.data.Day, 0, 0, 0);
                 evento.data.Date.AddHours(evento.data.TimeOfDay.Hours);
                 evento.data.Date.AddMinutes(evento.data.TimeOfDay.Minutes);
                 
