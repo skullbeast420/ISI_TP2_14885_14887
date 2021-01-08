@@ -65,7 +65,7 @@ namespace Cliente.Forms
 
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
-                string url = "http://localhost:56385/Service.svc/rest/UpdateEvento/?jsonString=" + output;
+                string url = "https://isitp2-apim.azure-api.net/api/Evento/UpdateEvento/" + output;
                 HttpClient client = new HttpClient();
 
                 HttpResponseMessage resposta = await client.PutAsync(url, stringContent);
@@ -82,7 +82,7 @@ namespace Cliente.Forms
                     newMenuForm.ShowDialog();
 
                 }
-                else if (resposta.IsSuccessStatusCode == false) MessageBox.Show("Ocorreu um erro ao alterar o ");
+                else if (resposta.IsSuccessStatusCode == false) MessageBox.Show("Ocorreu um erro ao alterar o evento!");
 
             }
         }

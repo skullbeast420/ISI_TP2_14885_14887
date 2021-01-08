@@ -149,7 +149,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AlterarEvento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AlterarEvento";
+            this.Text = "Alterar Evento";
             this.Load += new System.EventHandler(this.AlterarEvento_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

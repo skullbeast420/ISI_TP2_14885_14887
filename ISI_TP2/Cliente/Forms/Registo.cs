@@ -35,7 +35,7 @@ namespace Cliente.Forms
         {
 
             if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text)
-                || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(comboBox1.Text)) MessageBox.Show("Um ou mais campos não foram preenchidos!");
+                || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty(comboBox1.Text) || string.IsNullOrWhiteSpace(comboBox1.Text)) MessageBox.Show("Um ou mais campos não foram preenchidos!");
 
             else
             {
@@ -57,7 +57,7 @@ namespace Cliente.Forms
 
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
-                string url = "http://localhost:56385/Service.svc/rest/Registo/?jsonString=" + output;
+                string url = "https://isitp2-apim.azure-api.net/api/Utilizador/Registo/" + output;
                 HttpClient client = new HttpClient();
 
                 HttpResponseMessage resposta = await client.PostAsync(url, stringContent);

@@ -82,7 +82,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(340, 20);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Café com o pessoal";
             // 
             // textBox2
             // 
@@ -91,7 +90,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(340, 89);
             this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "Café com o pessoal para relaxar depois das entregas";
             // 
             // label4
             // 
@@ -139,7 +137,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AdicionarEvento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdicionarEvento";
+            this.Text = "Adicionar Evento";
             this.Load += new System.EventHandler(this.AdicionarEvento_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

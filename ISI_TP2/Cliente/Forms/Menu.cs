@@ -41,7 +41,7 @@ namespace Cliente.Forms
             HttpWebRequest request;
             HttpWebResponse response;
             StringBuilder uri = new StringBuilder();
-            uri.Append("http://localhost:56385/Service.svc/rest/GetWeatherTypes");
+            uri.Append("https://isitp2-apim.azure-api.net/api/IPMA/GetWeatherTypes");
 
             request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
 
@@ -62,7 +62,7 @@ namespace Cliente.Forms
 
             //Nova uri para aceder ao serviço da previsão para os próximos 5 dias
             uri = new StringBuilder();
-            uri.Append("http://localhost:56385/Service.svc/rest/Get5DayWeather/");
+            uri.Append("https://isitp2-apim.azure-api.net/api/IPMA/Get5DayWeather/");
             uri.Append(Form1.test.currentUser.id_cidade.ToString());
 
             request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
@@ -85,7 +85,7 @@ namespace Cliente.Forms
 
             //Nova uri para aceder aos eventos do utilizador
             uri = new StringBuilder();
-            uri.Append("http://localhost:56385/Service.svc/rest/GetEventos/");
+            uri.Append("https://isitp2-apim.azure-api.net/api/Evento/GetEventos/");
             uri.Append(Form1.test.currentUser.id.ToString());
 
             request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
@@ -99,10 +99,10 @@ namespace Cliente.Forms
             }
             Aux aux = JsonSerializer.Deserialize<Aux>(json);
 
-            if (aux.Json != null)
+            if (aux.json != null)
             {
 
-                listaEventos = JsonSerializer.Deserialize<List<Evento>>(aux.Json);
+                listaEventos = JsonSerializer.Deserialize<List<Evento>>(aux.json);
                 foreach (Evento evento in listaEventos)
                 {
                         string[] row = new string[] { evento.id.ToString() ,evento.data.ToShortDateString(), evento.titulo.ToString(), evento.descricao.ToString() };

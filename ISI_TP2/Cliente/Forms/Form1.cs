@@ -45,8 +45,7 @@ namespace Cliente
         {
 
             StringBuilder uri = new StringBuilder();
-            uri.Append("http://localhost:56385/Service.svc/rest/");
-            //uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
+            uri.Append("https://isitp2-apim.azure-api.net/api/Utilizador/");
             uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
 
             HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
@@ -61,7 +60,7 @@ namespace Cliente
             }
             Aux aux = JsonSerializer.Deserialize<Aux>(json);
 
-            if (aux.Json == null)
+            if (aux.json == null)
             {
 
                 MessageBox.Show("Os dados introduzidos estão incorretos. Tente Novamente!");
@@ -71,7 +70,7 @@ namespace Cliente
             else
             {
 
-                test.currentUser = JsonSerializer.Deserialize<Utilizador>(aux.Json);
+                test.currentUser = JsonSerializer.Deserialize<Utilizador>(aux.json);
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
                 novoForm.ShowDialog();

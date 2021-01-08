@@ -61,7 +61,7 @@ namespace Cliente.Forms
         {
             string output = JsonConvert.SerializeObject(evento);
 
-            string url = "http://localhost:56385/Service.svc/rest/DeleteEvento/?jsonString=" + output;
+            string url = "https://isitp2-apim.azure-api.net/api/Evento/DeleteEvento/" + output;
             HttpClient client = new HttpClient();
 
             HttpResponseMessage resposta = await client.DeleteAsync(url);

@@ -1,0 +1,359 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "WebAPI_ISI",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Evento/AddEvento/{jsonString}": {
+      "post": {
+        "tags": [
+          "Evento"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "jsonString",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/Evento/GetEventos/{id_utilizador}": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id_utilizador",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Aux"
+            }
+          }
+        }
+      }
+    },
+    "/api/Evento/DeleteEvento/{jsonString}": {
+      "delete": {
+        "tags": [
+          "Evento"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "jsonString",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/Evento/UpdateEvento/{jsonString}": {
+      "put": {
+        "tags": [
+          "Evento"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "jsonString",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/IPMA/RetornaCidades": {
+      "get": {
+        "tags": [
+          "IPMA"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IPMA/Get5DayWeather/{idCidade}": {
+      "get": {
+        "tags": [
+          "IPMA"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idCidade",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Previsao5dias"
+            }
+          }
+        }
+      }
+    },
+    "/api/IPMA/GetWeatherTypes": {
+      "get": {
+        "tags": [
+          "IPMA"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/TiposTempo"
+            }
+          }
+        }
+      }
+    },
+    "/api/Utilizador/Registo/{jsonString}": {
+      "post": {
+        "tags": [
+          "Utilizador"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "jsonString",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/Utilizador/Login/{email}/{password}": {
+      "get": {
+        "tags": [
+          "Utilizador"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Aux"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Aux": {
+      "type": "object",
+      "properties": {
+        "json": {
+          "type": "string"
+        }
+      }
+    },
+    "PrevisaoDia": {
+      "type": "object",
+      "properties": {
+        "precipitaProb": {
+          "type": "string"
+        },
+        "tMin": {
+          "type": "string"
+        },
+        "tMax": {
+          "type": "string"
+        },
+        "predWindDir": {
+          "type": "string"
+        },
+        "idWeatherType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "classWindSpeed": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "forecastDate": {
+          "type": "string"
+        },
+        "classPrecInt": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "string"
+        }
+      }
+    },
+    "Previsao5dias": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrevisaoDia"
+          }
+        },
+        "globalIdLocal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dataUpdate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Tempo": {
+      "type": "object",
+      "properties": {
+        "descIdWeatherTypeEN": {
+          "type": "string"
+        },
+        "descIdWeatherTypePT": {
+          "type": "string"
+        },
+        "idWeatherType": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "TiposTempo": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tempo"
+          }
+        }
+      }
+    }
+  }
+}
