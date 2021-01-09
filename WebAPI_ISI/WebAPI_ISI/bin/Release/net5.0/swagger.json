@@ -131,10 +131,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
+              "$ref": "#/definitions/Locais"
             }
           }
         }
@@ -257,6 +254,56 @@
       "properties": {
         "json": {
           "type": "string"
+        }
+      }
+    },
+    "Local": {
+      "type": "object",
+      "properties": {
+        "idRegiao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idAreaAviso": {
+          "type": "string"
+        },
+        "idConcelho": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "globalIdLocal": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "idDistrito": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "local": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        }
+      }
+    },
+    "Locais": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Local"
+          }
         }
       }
     },

@@ -17,7 +17,7 @@ namespace Cliente.Forms
 {
     public partial class Registo : Form
     {
-        Dictionary<int, string> listaLocais = new Dictionary<int, string>();
+        Locais listaLocais = new Locais();
 
         Form1 newForm = new Form1();
 
@@ -42,10 +42,12 @@ namespace Cliente.Forms
 
                 Form1.test.currentUser.cidade = comboBox1.Text;
 
-                foreach (KeyValuePair<int, string> kvp in listaLocais)
+                foreach (Local place in listaLocais.data)
                 {
 
-                    if (kvp.Value == Form1.test.currentUser.cidade) Form1.test.currentUser.id_cidade = kvp.Key;
+                    //if (kvp.Value == Form1.test.currentUser.cidade) Form1.test.currentUser.id_cidade = kvp.Key;
+
+                    if (string.Equals(place.local, comboBox1.Text)) Form1.test.currentUser.id_cidade = place.globalIdLocal;
 
                 }
 
@@ -57,7 +59,11 @@ namespace Cliente.Forms
 
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
+                //string url = "https://isitp2-apim.azure-api.net/api/Utilizador/Registo/" + output;
+           
+
                 string url = "https://isitp2-apim.azure-api.net/api/Utilizador/Registo/" + output;
+
                 HttpClient client = new HttpClient();
 
                 HttpResponseMessage resposta = await client.PostAsync(url, stringContent);
@@ -84,7 +90,7 @@ namespace Cliente.Forms
             object resposta;
             DataContractJsonSerializer jsonSerializer;
             StringBuilder uri = new StringBuilder();
-            uri.Append("http://localhost:56385/Service.svc/rest/RetornaCidades");
+            uri.Append("https://isitp2-apim.azure-api.net/api/IPMA/RetornaCidades");
 
             HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
 
@@ -98,17 +104,17 @@ namespace Cliente.Forms
                 }
 
                 //Serializa de JSON para Objecto
-                jsonSerializer = new DataContractJsonSerializer(typeof(Dictionary<int, string>));
+                jsonSerializer = new DataContractJsonSerializer(typeof(Locais));
                 resposta = jsonSerializer.ReadObject(response.GetResponseStream());
-                listaLocais = (Dictionary<int, string>)resposta;
+                listaLocais = (Locais)resposta;
             }
 
             //listaLocais = WCFapi.RetornaCidades();
             
-            foreach(KeyValuePair<int, string> kvp in listaLocais)
+            foreach(Local place in listaLocais.data)
             {
 
-                comboBox1.Items.Add(kvp.Value);
+                comboBox1.Items.Add(place.local);
 
             }
 

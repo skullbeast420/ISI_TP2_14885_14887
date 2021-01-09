@@ -15,9 +15,11 @@ namespace WebAPI_ISI.Controllers
         Utilizadores newUtilizadores = new Utilizadores();
 
         [HttpPost("Registo/{jsonString}")]
-        public bool Registo(string jsonString)
+        public ActionResult<bool> Registo(string jsonString)
         {
-            return newUtilizadores.Registo(jsonString);
+            if (newUtilizadores.Registo(jsonString) == true) return Ok();
+
+            else { return BadRequest(); }
         }
 
         [HttpGet("Login/{email}/{password}")]

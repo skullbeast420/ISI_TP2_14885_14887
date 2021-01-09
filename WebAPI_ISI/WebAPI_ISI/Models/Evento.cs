@@ -19,17 +19,12 @@ namespace WebAPI_ISI.Models
 
 		public bool AddEvento(string jsonString)
 		{
-
-			Random rdm = new Random();
 			
 			int numeroLinhas;
 
 			Evento eventoDeserialized = JsonConvert.DeserializeObject<Evento>(jsonString);
 
-			string query = "select id, data, titulo, descricao, id_utilizador from evento where data= TO_DATE('" + eventoDeserialized.data.ToShortDateString() +
-				"', 'DD/MM/YYYY') and titulo='" + eventoDeserialized.titulo + "' and descricao='" + eventoDeserialized.descricao + "' and id_utilizador=" + eventoDeserialized.id_utilizador + ";";
-
-			dt = db.ExecuteReturnQuery(query);
+			dt = db.ReturnSpecificEvent(eventoDeserialized);
 
 			if (dt.Rows.Count > 0)
 			{ return false; }
@@ -37,7 +32,7 @@ namespace WebAPI_ISI.Models
 			else
 			{
 
-				query = "select * from evento;";
+				string query = "select * from evento;";
 
 				dt = db.ExecuteReturnQuery(query);
 
@@ -57,9 +52,7 @@ namespace WebAPI_ISI.Models
 		{
 			string jsonString;
 
-			string query = "select * from Evento where id_utilizador='" + id_utilizador + "'";
-
-			dt = db.ExecuteReturnQuery(query);
+			dt = db.ReturnEventosUser(id_utilizador);
 
 			//Caso encontre os eventos do utilizador inserido
 			if (dt.Rows.Count != 0)
@@ -136,12 +129,6 @@ namespace WebAPI_ISI.Models
 		{
 			this.HiredForSerialization = JsonConvert.SerializeObject(this.data).Replace('"', ' ').Trim();
 		}
-
-		/*[OnDeserialized]
-		void OnDeserialized(StreamingContext ctx)
-		{
-			this.data = DateTime.Parse(this.HiredForSerialization);
-		}*/
 
 		[DataMember]
 		public string titulo { get; set; }

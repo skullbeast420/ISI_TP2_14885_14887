@@ -14,7 +14,7 @@ namespace WebAPI_ISI.Controllers
         IpmaMetodos newIpma = new IpmaMetodos();
 
         [HttpGet("RetornaCidades")]
-        public Dictionary<int, string> RetornaCidades()
+        public Locais RetornaCidades()
         {
             return newIpma.RetornaCidades();
         }

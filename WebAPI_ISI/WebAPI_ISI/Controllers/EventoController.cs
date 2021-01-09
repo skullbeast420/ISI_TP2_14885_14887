@@ -15,9 +15,11 @@ namespace WebAPI_ISI.Controllers
         Eventos newEventos = new Eventos();
 
         [HttpPost("AddEvento/{jsonString}")]
-        public bool AddEvento(string jsonString)
+        public ActionResult<bool> AddEvento(string jsonString)
         {
-            return newEventos.AddEvento(jsonString);
+            if (newEventos.AddEvento(jsonString) == true) return Ok();
+
+            else { return BadRequest(); }
         }
 
         [HttpGet("GetEventos/{id_utilizador}")]

@@ -23,9 +23,7 @@ namespace WebAPI_ISI.Models
 
 			Utilizador userDeserialized = JsonConvert.DeserializeObject<Utilizador>(jsonString);
 
-			query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='" + userDeserialized.email + "';";
-
-			dt = db.ExecuteReturnQuery(query);
+			dt = db.ReturnUsersEmail(userDeserialized.email);
 
 			if (dt.Rows.Count > 0)
 			{ return false; }
@@ -33,7 +31,7 @@ namespace WebAPI_ISI.Models
 			else
 			{
 
-				query = "select id, nome, cidade, id_cidade, email, password from Utilizador";
+				query = "select * from Utilizador;";
 
 				dt = db.ExecuteReturnQuery(query);
 
@@ -55,9 +53,7 @@ namespace WebAPI_ISI.Models
 			if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
 			{
 
-				string query = "select id, nome, cidade, id_cidade, email, password from Utilizador where email='" + email + "' and password='" + password + "'";
-
-				dt = db.ExecuteReturnQuery(query);
+				dt = db.ReturnUsersEmailPassword(email, password);
 
 				//Se encontrar algum utilizador com o mail e a password introduzidos
 				if (dt.Rows.Count != 0)

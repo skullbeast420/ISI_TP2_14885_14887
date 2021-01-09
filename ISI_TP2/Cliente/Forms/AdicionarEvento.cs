@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,8 +71,7 @@ namespace Cliente.Forms
 
                 HttpResponseMessage resposta = await client.PostAsync(url, stringContent);
 
-                //Falta tratar a resposta bool que é enviada do serviço (true ou false), o que está feito não funciona
-                if (resposta.IsSuccessStatusCode == true)
+                if (resposta.StatusCode.Equals(HttpStatusCode.OK))
                 {
 
                     MessageBox.Show("O evento foi adicionado à sua agenda com sucesso!");
@@ -81,7 +81,7 @@ namespace Cliente.Forms
                     this.Close();
 
                 }
-                else if (resposta.IsSuccessStatusCode == false) MessageBox.Show("Já existe um evento registado por si com os parâmetros introduzidos!");
+                else if (resposta.StatusCode.Equals(HttpStatusCode.BadRequest)) MessageBox.Show("Já existe um evento registado por si com os parâmetros introduzidos!");
 
             }
 

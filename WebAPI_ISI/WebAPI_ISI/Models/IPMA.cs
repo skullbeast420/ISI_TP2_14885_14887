@@ -20,7 +20,7 @@ namespace WebAPI_ISI.Models
 		/// <returns>
 		/// locais- dictionary com os id's e nomes das cidades
 		/// </returns>
-		public Dictionary<int, string> RetornaCidades()
+		public Locais RetornaCidades()
 		{
 
 			Dictionary<int, string> locais = new Dictionary<int, string>();
@@ -48,14 +48,7 @@ namespace WebAPI_ISI.Models
 
 			}
 
-			foreach (Local m in listaLocais.data)
-			{
-
-				locais.Add(m.globalIdLocal, m.local);
-
-			}
-
-			return locais;
+			return listaLocais;
 		}
 
 		public Previsao5dias Get5DayWeather(string idCidade)

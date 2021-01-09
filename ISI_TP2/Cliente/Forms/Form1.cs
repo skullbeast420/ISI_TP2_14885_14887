@@ -50,7 +50,6 @@ namespace Cliente
 
             HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
 
-            //h2
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string json;
 
