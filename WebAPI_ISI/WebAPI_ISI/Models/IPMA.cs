@@ -23,7 +23,6 @@ namespace WebAPI_ISI.Models
 		public Locais RetornaCidades()
 		{
 
-			Dictionary<int, string> locais = new Dictionary<int, string>();
 			StringBuilder uri = new StringBuilder();
 			Locais listaLocais = new Locais();
 
