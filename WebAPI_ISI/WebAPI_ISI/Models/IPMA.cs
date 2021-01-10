@@ -51,6 +51,11 @@ namespace WebAPI_ISI.Models
 			return listaLocais;
 		}
 
+		/// <summary>
+		/// Acede à API do IPMA para obter a previsão meteorológica dos próximos 5 dias para uma determinada cidade
+		/// </summary>
+		/// <param name="idCidade">Id da cidade cuja previsão meteorológica para os próximos 5 dias se quer saber</param>
+		/// <returns></returns>
 		public Previsao5dias Get5DayWeather(string idCidade)
 		{
 
@@ -84,6 +89,10 @@ namespace WebAPI_ISI.Models
 
 		}
 
+		/// <summary>
+		/// Acede à API do IPMA para obter as descrições dos diferentes tipos de tempo
+		/// </summary>
+		/// <returns></returns>
 		public TiposTempo GetWeatherTypes()
 		{
 
@@ -120,7 +129,7 @@ namespace WebAPI_ISI.Models
 
 
 	/// <summary>
-	/// Summary description for IPMA
+	/// Classe que irá contem a informação sobre os diferentes locais
 	/// </summary>
 	public class Locais
 	{
@@ -131,6 +140,9 @@ namespace WebAPI_ISI.Models
 
 	}
 
+	/// <summary>
+	/// Classe que contém a informação de cada local
+	/// </summary>
 	public class Local
 	{
 		public int idRegiao { get; set; }
@@ -143,6 +155,9 @@ namespace WebAPI_ISI.Models
 		public string longitude { get; set; }
 	}
 
+	/// <summary>
+	/// Classe que contém a descrição de um tipo de tempo
+	/// </summary>
 	public class Tempo
 	{
 		public string descIdWeatherTypeEN { get; set; }
@@ -150,6 +165,9 @@ namespace WebAPI_ISI.Models
 		public int idWeatherType { get; set; }
 	}
 
+	/// <summary>
+	/// Classe que contém as descrições dos tipos de tempo
+	/// </summary>
 	public class TiposTempo
 	{
 		public string owner { get; set; }
@@ -157,6 +175,9 @@ namespace WebAPI_ISI.Models
 		public List<Tempo> data { get; set; }
 	}
 
+	/// <summary>
+	/// Classe que contém a previsão metereológica de 1 dia
+	/// </summary>
 	public class PrevisaoDia
 	{
 		public string precipitaProb { get; set; }
@@ -171,6 +192,9 @@ namespace WebAPI_ISI.Models
 		public string latitude { get; set; }
 	}
 
+	/// <summary>
+	/// Classe que contém a previsão metereológica de 5 dias
+	/// </summary>
 	[DataContract]
 	public class Previsao5dias
 	{

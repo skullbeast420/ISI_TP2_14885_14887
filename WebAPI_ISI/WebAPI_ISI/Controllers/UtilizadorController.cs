@@ -14,6 +14,14 @@ namespace WebAPI_ISI.Controllers
 
         Utilizadores newUtilizadores = new Utilizadores();
 
+        /// <summary>
+        /// Método POST que insere um novo Utilizador na Base de Dados
+        /// </summary>
+        /// <param name="jsonString">String em formato JSON com a informação do Utilizador a ser introduzido</param>
+        /// <returns>
+        /// 200 OK - Sucesso no registo
+        /// 400 Bad Request - Já existe um utilizador com o email introduzido
+        /// </returns>
         [HttpPost("Registo/{jsonString}")]
         public ActionResult<bool> Registo(string jsonString)
         {
@@ -22,6 +30,14 @@ namespace WebAPI_ISI.Controllers
             else { return BadRequest(); }
         }
 
+        /// <summary>
+        /// Método GET que irá executar a função de Login
+        /// </summary>
+        /// <param name="email">E-Mail introduzido na aplicação</param>
+        /// <param name="password">Password introduzida na aplicação</param>
+        /// <returns>
+        /// Objeto do tipo "Aux" cuja propriedade "json" irá conter uma string em formato JSON com os dados do Utilizador
+        /// </returns>
         [HttpGet("Login/{email}/{password}")]
         public Aux Login(string email, string password)
         {

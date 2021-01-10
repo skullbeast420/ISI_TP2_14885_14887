@@ -58,10 +58,7 @@ namespace Cliente.Forms
                 string output = JsonConvert.SerializeObject(Form1.test.currentUser);
 
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
-
-                //string url = "https://isitp2-apim.azure-api.net/api/Utilizador/Registo/" + output;
            
-
                 string url = "https://isitp2-apim.azure-api.net/api/Utilizador/Registo/" + output;
 
                 HttpClient client = new HttpClient();

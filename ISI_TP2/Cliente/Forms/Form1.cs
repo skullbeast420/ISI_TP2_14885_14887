@@ -44,40 +44,47 @@ namespace Cliente
         private void button1_Click(object sender, EventArgs e)
         {
 
-            StringBuilder uri = new StringBuilder();
-            uri.Append("https://isitp2-apim.azure-api.net/api/Utilizador/");
-            uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
-
-            HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string json;
-
-            using (var sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-            {
-                json = sr.ReadToEnd();
-            }
-            Aux aux = JsonSerializer.Deserialize<Aux>(json);
-
-            if (aux.json == null)
+            if (!string.IsNullOrWhiteSpace(textBox1.Text) || !string.IsNullOrWhiteSpace(textBox2.Text))
             {
 
-                MessageBox.Show("Os dados introduzidos estão incorretos. Tente Novamente!");
+                StringBuilder uri = new StringBuilder();
+                uri.Append("https://isitp2-apim.azure-api.net/api/Utilizador/");
+                uri.Append("Login/" + textBox1.Text + "/" + textBox2.Text);
+
+                HttpWebRequest request = WebRequest.Create(uri.ToString()) as HttpWebRequest;
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                string json;
+
+                using (var sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                {
+                    json = sr.ReadToEnd();
+                }
+                Aux aux = JsonSerializer.Deserialize<Aux>(json);
+
+                if (aux.json == null)
+                {
+
+                    MessageBox.Show("Os dados introduzidos estão incorretos. Tente Novamente!");
+
+                }
+
+                else
+                {
+
+                    test.currentUser = JsonSerializer.Deserialize<Utilizador>(aux.json);
+                    MessageBox.Show("Login efetuado com sucesso!");
+                    this.Hide();
+                    novoForm.ShowDialog();
+                    this.Close();
+
+                }
+
+                response.Close();
 
             }
-
-            else
-            {
-
-                test.currentUser = JsonSerializer.Deserialize<Utilizador>(aux.json);
-                MessageBox.Show("Login efetuado com sucesso!");
-                this.Hide();
-                novoForm.ShowDialog();
-                this.Close();
-
-            }
-
-            response.Close();
+            
+            else { MessageBox.Show("Um ou mais campos não foram introduzidos!"); }
 
         }
 

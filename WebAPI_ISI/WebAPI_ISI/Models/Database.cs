@@ -16,10 +16,16 @@ namespace WebAPI_ISI.Models
 
         }
 
+        //String que contém a informação para fazer a ligação à Base de Dados
         private static string connectionString = "Server=isitp2server.postgres.database.azure.com;Database=isi_tp2;Port=5432;User Id=Bernas@isitp2server;Password=Guardasol23;Ssl Mode=Require;";
 
         #region Evento
 
+        /// <summary>
+        /// Insere um novo evento na base de dados
+        /// </summary>
+        /// <param name="evento">Evento a ser inserido</param>
+        /// <returns></returns>
         public int ExecuteInsertEvento(Evento evento)
         {
 
@@ -43,6 +49,11 @@ namespace WebAPI_ISI.Models
             }
         }
 
+        /// <summary>
+        /// Retorna um evento em específico
+        /// </summary>
+        /// <param name="eventoDeserialized">Evento a ser retornado</param>
+        /// <returns></returns>
         public DataTable ReturnSpecificEvent(Evento eventoDeserialized)
         {
 
@@ -50,26 +61,37 @@ namespace WebAPI_ISI.Models
 
             DataTable dt = new DataTable();
 
-            using (var connection = new NpgsqlConnection(connectionString))
+            try
             {
-                connection.Open();
 
-                NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
 
-                cmd.Parameters.AddWithValue("@data", eventoDeserialized.data.ToShortDateString());
-                cmd.Parameters.AddWithValue("@titulo", eventoDeserialized.titulo);
-                cmd.Parameters.AddWithValue("@descricao", eventoDeserialized.descricao);
-                cmd.Parameters.AddWithValue("@id_utilizador", eventoDeserialized.id_utilizador);
+                    NpgsqlCommand cmd = new NpgsqlCommand(query, connection);
 
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
+                    cmd.Parameters.AddWithValue("@data", eventoDeserialized.data.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@titulo", eventoDeserialized.titulo);
+                    cmd.Parameters.AddWithValue("@descricao", eventoDeserialized.descricao);
+                    cmd.Parameters.AddWithValue("@id_utilizador", eventoDeserialized.id_utilizador);
 
-                da.Fill(dt);
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
+
+                    da.Fill(dt);
+                }
+
             }
-
+            catch(Exception e)
+            { }
+            
             return dt;
-
         }
 
+        /// <summary>
+        /// Retorna um conjunto de eventos
+        /// </summary>
+        /// <param name="id_utilizador">Id do utilizador cujos eventos querem ser retornados</param>
+        /// <returns></returns>
         public DataTable ReturnEventosUser(string id_utilizador)
         {
 
@@ -94,6 +116,11 @@ namespace WebAPI_ISI.Models
 
         }
 
+        /// <summary>
+        /// Remove um evento da base de dados
+        /// </summary>
+        /// <param name="eventoDeserialized">Evento a ser removido</param>
+        /// <returns></returns>
         public int ExecuteDeleteEvento(Evento eventoDeserialized)
         {
             string query = "DELETE FROM Evento WHERE ID = @id;";
@@ -111,6 +138,11 @@ namespace WebAPI_ISI.Models
             }
         }
 
+        /// <summary>
+        /// Altera um evento na base de dados
+        /// </summary>
+        /// <param name="evento">Evento a ser alterado</param>
+        /// <returns></returns>
         public int ExecuteUpdateEvento(Evento evento)
         {
 
@@ -159,6 +191,11 @@ namespace WebAPI_ISI.Models
 
         #region Utilizador
 
+        /// <summary>
+        /// Retorna os utilizadores com o E-Mail especificado
+        /// </summary>
+        /// <param name="email">E-Mail a procurar nos utilizadores</param>
+        /// <returns></returns>
         public DataTable ReturnUsersEmail(string email)
         {
 
@@ -183,6 +220,12 @@ namespace WebAPI_ISI.Models
 
         }
 
+        /// <summary>
+        /// Retorna os utilizadores com o E-Mail e Password especificados
+        /// </summary>
+        /// <param name="email">E-Mail a procurar nos utilizadores</param>
+        /// <param name="password">Password a procurar nos utilizadores</param>
+        /// <returns></returns>
         public DataTable ReturnUsersEmailPassword(string email, string password)
         {
 
@@ -207,8 +250,11 @@ namespace WebAPI_ISI.Models
             return dt;
         }
 
-
-
+        /// <summary>
+        /// Insere um novo utilizador na base de dados
+        /// </summary>
+        /// <param name="currentUser"></param>
+        /// <returns></returns>
         public int ExecuteInsertUser(Utilizador currentUser)
         {
 
